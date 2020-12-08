@@ -1,10 +1,10 @@
 import java.util.*;
 
-public class listToBody
+public class ListToBody
 {
 	public String [] data;
 
-	public listToBody(String list){
+	public ListToBody(String list){
 		this.data = list.split(",");
 	}
 

@@ -39,7 +39,7 @@ public class Starter{
 			Boolean nextNode = true;
 			while(nextNode){
 				nextNode = listed.hasNext(listed);
-				listToBody bodier = new listToBody(listed.getHeadData(listed));
+				ListToBody bodier = new ListToBody(listed.getHeadData(listed));
 				Body planet = bodier.Bodify();
 				planets.add(planet);
 				listed.nextHead(listed);
@@ -52,7 +52,7 @@ public class Starter{
 			System.out.println(Arrays.toString(listed));
  
 			for(int i = 2; i < listed.length; i++){
-				listToBody bodier = new listToBody(listed[i]);
+				ListToBody bodier = new ListToBody(listed[i]);
 				Body planet = bodier.Bodify();
 				planets.add(planet);
 				System.out.println(planet.toString());
@@ -65,7 +65,7 @@ public class Starter{
 
 
 		//set up planet on jframe and shows those planets
-		Galaxy t = new Galaxy(planets);
+		Tutorial t = new Tutorial(planets);
 		
 		JFrame jf = new JFrame();
 
