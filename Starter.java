@@ -31,11 +31,7 @@ public class Starter{
 			for(int i = 2; i < linesArray.length; i++){
 				listed = listed.insert(listed, linesArray[i]);
 			};
-			//System.out.println("LinkedList");
-			//listed.printList(listed);
-
-			// System.out.println(listed.getHeadData(listed));
-			// System.out.println(listed.nextHeadData(listed));
+			
 			Boolean nextNode = true;
 			while(nextNode){
 				nextNode = listed.hasNext(listed);
