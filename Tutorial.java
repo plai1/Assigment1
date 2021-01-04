@@ -8,8 +8,8 @@ public class Tutorial extends JPanel implements ActionListener
 {
 	//Goeey version of sleep method
 	ArrayList<Body> planets = new ArrayList();
-	Timer tm = new Timer(5, this); //milllisecond, actionlsitener
-	int x = 0, velX = 2; //position horizontal, velocity of moving object
+	int timMillisecond = 5;
+	Timer tm = new Timer(timMillisecond, this); //milllisecond, actionlsitener
 
 	//calling upon class asks for lists
 	public Tutorial(ArrayList<Body> b){
@@ -23,20 +23,29 @@ public class Tutorial extends JPanel implements ActionListener
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+
 		for(int i = 0; i < this.planets.size(); i++){
-			g.setColor(planets.get(i).getColor());
-			g.fillOval(planets.get(i).getX(), planets.get(i).getY(), planets.get(i).getSize(), planets.get(i).getSize());
+			this.planets.get(i).draw(g);
 		}
 
-		//tm.start(); //start timer
+		
+		
+		//start timer for gravitational orbit
+		tm.start(); 
 	}
 
 	public void actionPerformed(ActionEvent e)
 	{
-		if (x < 0 || x > 600)
-			velX = -velX; //make sure object in frame
+		//adds gravitational movement 
+		//should be creating animation
+		//makes the planets move in one direction instead
+		for(int i = 0; i < planets.size(); i++){
+			if(i != 0){
+				planets.get(i).addForce(planets.get(0));
+				planets.get(i).update(0.000001);
+			}
+		}
 
-		x = x + velX; //move position in velX speed
 		repaint(); //paints rectaing every millisecond
 	}
 

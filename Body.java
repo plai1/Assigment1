@@ -31,10 +31,11 @@ public class Body {
   
   // update the velocity and position using a timestep dt
   public void update(double dt) {
-    vx += dt * fx / mass;
-    vy += dt * fy / mass;
-    rx += dt * vx;
-    ry += dt * vy;
+    this.vx += dt * this.fx / this.mass;
+    this.vy += dt * this.fy / this.mass;
+    this.rx += dt * this.vx;
+    this.ry += dt * this.vy;
+    
   }
   
   // returns the distance between two bodies
@@ -60,6 +61,11 @@ public class Body {
     double F = (G * a.mass * b.mass) / (dist*dist);
     a.fx += F * dx / dist;
     a.fy += F * dy / dist;
+  }
+
+  public void draw(Graphics g){
+    g.setColor(this.getColor());
+    g.fillOval(this.getX(), this.getY(), this.getSize(), this.getSize());
   }
   
   // convert to string representation formatted nicely
