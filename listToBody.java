@@ -18,7 +18,6 @@ public class ListToBody
 		Double size = Double.parseDouble(this.data[6]);
 
 		Body res = new Body(name, mass, rx, ry, vx, vy ,size);
-
 		return res;
 	}
 	

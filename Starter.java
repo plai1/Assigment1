@@ -23,45 +23,55 @@ public class Starter{
 		//creates string arraylist
 		String[] linesArray = texts.toArray(new String[texts.size()]);
 		//Body list
-		ArrayList<Body> planets = new ArrayList<Body>();
+		linkedList planets1 = null;
+		arrayLister planets2 = null;
+		//tutorial calling
+		Tutorial t;
 
 		//determiens if wanted list is to be ArrayList or LinkedList
 		if(linesArray[0].equals("LinkedList")){ //LinkedList
-			linkedList listed = new linkedList();
+
+			ArrayList<String> info = new ArrayList<String>();
+
+
+
 			for(int i = 2; i < linesArray.length; i++){
-				listed = listed.insert(listed, linesArray[i]);
+				info.add(i - 2,linesArray[i]);
 			};
-			
-			Boolean nextNode = true;
-			while(nextNode){
-				nextNode = listed.hasNext(listed);
-				ListToBody bodier = new ListToBody(listed.getHeadData(listed));
+
+			ListToBody bodi = new ListToBody(info.get(0));
+			Body planeter = bodi.Bodify();
+			planets1 = new linkedList(planeter);
+
+			for(int i = 0; i < info.size(); i++){
+				ListToBody bodier = new ListToBody(info.get(i));
 				Body planet = bodier.Bodify();
-				planets.add(planet);
-				listed.nextHead(listed);
+				planets1.insert(planets1, planet);
 			};	
+
 
 		} else{ //ArrayList
 			String[] listed = linesArray;
-			System.out.println("ArrayList");
-			System.out.println(listed[3]);
-			System.out.println(Arrays.toString(listed));
- 
+			planets2 = new arrayLister();
+
+			//creates array list from own arraylist class
 			for(int i = 2; i < listed.length; i++){
 				ListToBody bodier = new ListToBody(listed[i]);
 				Body planet = bodier.Bodify();
-				planets.add(planet);
-				System.out.println(planet.toString());
+				planets2.add(planet);
 			};
 
-			System.out.println("Planets Size: " + planets.size());
+			System.out.println(planets2);
+
 		};
 
 
-
-
+		if(planets2 == null){
+			t = new Tutorial(planets1);
+		} else{
+			t = new Tutorial(planets2);
+		} 
 		//set up planet on jframe and shows those planets
-		Tutorial t = new Tutorial(planets);
 		
 		JFrame jf = new JFrame();
 

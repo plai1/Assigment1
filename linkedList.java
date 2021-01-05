@@ -3,28 +3,43 @@ import java.io.*;
 public class linkedList
 {
 	Node head;
+	Node first;
 
 	//Node class
 	static class Node
 	{
-		String data;
-		Node next;
+		Body data = null;
+		Node next = null;
 
-		Node(String d)
+		Node(Body d)
 		{
 			data=d;
 			next=null;
 		}
+
+		public String toString(){
+			String res = "";
+			res += this.data;
+
+			return res;
+		}
 	}
 
 	//insert new node
-	public static linkedList insert(linkedList list, String data)
+
+	public linkedList(Body data){
+		insert(this, data);
+	}
+
+	public static void insert(linkedList list, Body data)
 	{
 		Node newNode = new Node(data);
 		newNode.next = null;
 
-		if(list.head == null)
+		if(list.head == null){
 			list.head = newNode;
+			list.first = newNode;
+		}
 		else{
 			Node last = list.head;
 			while(last.next != null)
@@ -32,7 +47,6 @@ public class linkedList
 			last.next = newNode;
 		}
 
-		return list;
 
 	}
 
@@ -52,7 +66,7 @@ public class linkedList
         } 
 	}
 
-	public static String getHeadData(linkedList list)
+	public static Body getHeadData(linkedList list)
 	{
 		Node currNode = list.head;
 		return(currNode.data);
@@ -75,10 +89,22 @@ public class linkedList
 		if(currNode.next != null)
 		{
 			Node nextNode = currNode.next;
-			return nextNode.data;
+			return nextNode.data.toString();
 		} else{
 			return "There is no next node.";
 		}
+	}
+
+	public static void resetHead(linkedList list)
+	{
+		Node currNode = list.head;
+		list.head = list.first;
+	}
+
+	public static void secondHead(linkedList list)
+	{
+		Node currNode = list.head;
+		list.head = list.first.next;
 	}
 
 	public static boolean hasNext(linkedList list){
@@ -86,9 +112,11 @@ public class linkedList
 		return (currNode.next != null);
 	}
 
-	public static String isNode(linkedList list){
+
+	public static Body isNode(linkedList list){
 		Node currNode = list.head;
 		return (currNode.data);
 	}
+
 
 };

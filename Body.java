@@ -70,7 +70,11 @@ public class Body {
   
   // convert to string representation formatted nicely
   public String toString() {
-    return "" + name + ", "+ rx + ", "+ ry+ ", "+  vx+ ", "+ vy+ ", "+ mass;
+    return "" + name + ", "+ mass + ", " +  rx + ", "+ ry+ ", "+  vx+ ", "+ vy+ ", "+ siz;
+  }
+
+  public String getName(){
+    return this.name;
   }
 
   public int getMass(){
